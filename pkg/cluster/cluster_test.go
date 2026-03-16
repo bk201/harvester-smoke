@@ -13,7 +13,7 @@ import (
 
 	rancherv3 "github.com/rancher/rancher/pkg/apis/management.cattle.io/v3"
 	"github.com/sirupsen/logrus"
-	"gopkg.in/yaml.v3"
+	"go.yaml.in/yaml/v3"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	kubevirtv1 "kubevirt.io/api/core/v1"
@@ -31,7 +31,7 @@ var (
 	clusterConfig     ClusterConfig
 )
 
-func defineClusterConfigFlags() error {
+func defineClusterTestFlags() error {
 	userHome, err := os.UserHomeDir()
 	if err != nil {
 		return err
@@ -99,7 +99,7 @@ func loadClusterConfig() error {
 func TestMain(m *testing.M) {
 	logrus.Infof("harvester-smoke version: %s", version.Version)
 
-	err := defineClusterConfigFlags()
+	err := defineClusterTestFlags()
 	if err != nil {
 		fmt.Println("fail to define cluster config flags:", err)
 		os.Exit(1)
