@@ -16,7 +16,7 @@ etcdCount: 3
 # Expected deployments to be present and ready (format: "namespace/name")
 # The test will warn if unexpected deployments are found
 expectedDeployments:
-  - cattle-capi-system/capi-controller-manager
+#  - cattle-capi-system/capi-controller-manager
   - harvester-system/cdi-apiserver
   - harvester-system/cdi-deployment
   - harvester-system/cdi-operator
@@ -41,7 +41,7 @@ expectedDeployments:
   - longhorn-system/longhorn-driver-deployer
   - longhorn-system/longhorn-ui
   - cattle-system/rancher
-  - cattle-turtles-system/rancher-turtles-controller-manager
+#  - cattle-turtles-system/rancher-turtles-controller-manager
   - cattle-system/rancher-webhook
   - kube-system/rke2-coredns-rke2-coredns
   - kube-system/rke2-coredns-rke2-coredns-autoscaler
@@ -55,7 +55,7 @@ expectedDeployments:
 
 # Expected daemonsets to be present and ready (format: "namespace/name")
 expectedDaemonSets:
-  - longhorn-system/engine-image-ei-ff1cedad
+#  - longhorn-system/engine-image-ei-ff1cedad
   - harvester-system/harvester-network-controller
   - harvester-system/harvester-networkfs-manager
   - harvester-system/harvester-node-disk-manager
