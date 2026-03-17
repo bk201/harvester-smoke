@@ -36,9 +36,9 @@ jobs:
         run: make
 
       - name: Create release tarball
-        if: github.event_name == 'release'
         run: |
-          cd bin
+          mkdir -p harvester-smoke
+          cp bin/* harvester-smoke/ 
           tar -czf harvester-smoke-${{ steps.version.outputs.version }}.tar.gz harvester-smoke
           cd ..
 
@@ -48,11 +48,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload ${{ github.event.release.tag_name }} \
-            ./bin/harvester-smoke-${{ steps.version.outputs.version }}.tar.gz
+            harvester-smoke-${{ steps.version.outputs.version }}.tar.gz
 
       - name: Upload build artifact
         if: github.event_name != 'release'
         uses: actions/upload-artifact@v4
         with:
           name: harvester-smoke
-          path: bin/harvester-smoke
+          path: harvester-smoke-${{ steps.version.outputs.version }}.tar.gz
