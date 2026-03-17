@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - main-test
   pull_request:
   release:
     types: [published]
