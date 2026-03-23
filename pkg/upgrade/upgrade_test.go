@@ -186,7 +186,7 @@ func wait_upgrade_condition(ctx context.Context, t *testing.T, cfg *envconf.Conf
 }
 
 func wait_image(ctx context.Context, t *testing.T, cfg *envconf.Config) context.Context {
-	return wait_upgrade_condition(ctx, t, cfg, 10*time.Second, 5*time.Minute, harvv1api.ImageReady)
+	return wait_upgrade_condition(ctx, t, cfg, 10*time.Second, 10*time.Minute, harvv1api.ImageReady)
 }
 
 func wait_log(ctx context.Context, t *testing.T, cfg *envconf.Config) context.Context {
@@ -194,7 +194,7 @@ func wait_log(ctx context.Context, t *testing.T, cfg *envconf.Config) context.Co
 }
 
 func wait_repo(ctx context.Context, t *testing.T, cfg *envconf.Config) context.Context {
-	return wait_upgrade_condition(ctx, t, cfg, 10*time.Second, 10*time.Minute, harvv1api.RepoProvisioned)
+	return wait_upgrade_condition(ctx, t, cfg, 10*time.Second, 5*time.Minute, harvv1api.RepoProvisioned)
 }
 
 func wait_node_prepared(ctx context.Context, t *testing.T, cfg *envconf.Config) context.Context {
