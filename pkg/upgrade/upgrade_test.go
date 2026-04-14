@@ -48,9 +48,8 @@ func defineUpgradeTestFlags() error {
 }
 
 type TestConfig struct {
-	ControllerCount int    `yaml:"controllerCount,omitempty"`
-	EtcdCount       int    `yaml:"etcdCount,omitempty"`
-	UpgradeISOURL   string `yaml:"upgradeISOURL,omitempty"`
+	NodeCount     int    `yaml:"nodeCount,omitempty"`
+	UpgradeISOURL string `yaml:"upgradeISOURL,omitempty"`
 }
 
 func loadTestConfig() error {
@@ -198,7 +197,9 @@ func wait_repo(ctx context.Context, t *testing.T, cfg *envconf.Config) context.C
 }
 
 func wait_node_prepared(ctx context.Context, t *testing.T, cfg *envconf.Config) context.Context {
-	return wait_upgrade_condition(ctx, t, cfg, 30*time.Second, 30*time.Minute, harvv1api.NodesPrepared)
+	totalWaitTime := time.Duration(upgradeConfig.NodeCount) * 12 * time.Minute
+	// We usually need 10 minutes on lab machines (VMs)
+	return wait_upgrade_condition(ctx, t, cfg, 30*time.Second, totalWaitTime, harvv1api.NodesPrepared)
 }
 
 func wait_system_service_upgraded(ctx context.Context, t *testing.T, cfg *envconf.Config) context.Context {

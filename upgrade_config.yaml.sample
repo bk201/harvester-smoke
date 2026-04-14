@@ -1,1 +1,2 @@
 upgradeISOURL: http://10.10.0.1/harvester/harvester.iso
+nodeCount: 3

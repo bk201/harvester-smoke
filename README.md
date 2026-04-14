@@ -16,6 +16,9 @@ This repository contains some smoke test for Harvester.
 To run the cluster readiness smoke test:
 
 ```bash
+# copy sample config and edit sane values
+cp cluster_config.yaml.sample cluster_config.yaml
+
 go test -v -count 1 -timeout 4h ./pkg/cluster -run TestClusterReady \
     -clusterconfig $(pwd)/cluster_config.yaml \
     -kubeconfig /path/to/your/kubeconfig
@@ -26,6 +29,9 @@ go test -v -count 1 -timeout 4h ./pkg/cluster -run TestClusterReady \
 To run the Harvester upgrade test:
 
 ```bash
+# copy sample config and edit sane values
+cp upgrade_config.yaml.sample upgrade_config.yaml
+
 go test -v -count 1 -timeout 4h ./pkg/upgrade -run TestHarvesterUpgrade \
     -upgradeconfig $(pwd)/upgrade_config.yaml \
     -kubeconfig /path/to/your/kubeconfig
